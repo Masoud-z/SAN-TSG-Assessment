@@ -14,9 +14,10 @@ import {
 } from "react-router-dom";
 import "./i18n/i18n";
 import App from "./App";
-import Layout from "./components/layout/Layout";
+import Layout from "./components/Layout/Layout";
 import { AppRouteKey } from "./core/constants/routes";
 import { queryKeys } from "./core/constants/queryKeys";
+import LoadingPage from "./components/LoadingPage/LoadingPage";
 
 type Routes = RouteProps & {
   lazyElement?: React.LazyExoticComponent<() => JSX.Element>;
@@ -43,7 +44,7 @@ const router = createBrowserRouter(
           path={route.path}
           element={
             route.lazyElement ? (
-              <Suspense fallback={<div>Loading...</div>}>
+              <Suspense fallback={<LoadingPage />}>
                 <route.lazyElement />
               </Suspense>
             ) : (

@@ -55,8 +55,6 @@ const Layout = () => {
     localStorage.setItem("lan", lan);
   }
 
-  console.log(user);
-
   return (
     <div className="w-full min-h-screen ">
       <header className="w-full flex justify-between items-center mb-1 px-5 py-3 shadow-md dark:shadow-amber-50">

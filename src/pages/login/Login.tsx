@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import Card from "../../components/card/Card";
+import Card from "../../components/Card/Card";
 import { useEffect } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import { UserDto } from "../../core/dto/user.dto";
@@ -19,12 +19,12 @@ const Login = () => {
       AppRouteKey.home.go();
     }
   }, []);
-  
+
   function loginUser() {
     mutate();
   }
   return (
-    <div className="w-full h-lvh flex justify-center items-center">
+    <div className="w-full h-[90vh] flex justify-center items-center">
       <Card className="w-72 h-72 flex flex-col justify-center items-center gap-4">
         <div className="w-4.5 h-4.5">
           {isPending && <SpinningCircularLoader className="w-4.5 h-4.5" />}
