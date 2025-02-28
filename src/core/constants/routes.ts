@@ -1,4 +1,18 @@
-import { redirect } from "react-router-dom";
+import { NavigateFunction } from "react-router-dom";
+
+let navigate: NavigateFunction;
+
+export const setNavigator = (navigator: NavigateFunction) => {
+  navigate = navigator;
+};
+
+const redirect = (path: string) => {
+  if (navigate) {
+    navigate(path);
+  } else {
+    console.warn("Navigator not yet initialized");
+  }
+};
 export const AppRouteKey = {
   home: { get: () => "/", go: () => redirect("/") },
   login: { get: () => "/login", go: () => redirect("/login") },

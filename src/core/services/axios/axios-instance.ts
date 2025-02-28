@@ -1,7 +1,8 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 import errorHandler from "./errorHandler";
+import appConfig from "../../config";
 
-let axiosInstance: AxiosInstance = axios.create();
+let axiosInstance: AxiosInstance = axios.create({ baseURL: appConfig.baseUrl });
 
 export const api = <Result>(
   options?: AxiosRequestConfig,

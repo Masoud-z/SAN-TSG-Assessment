@@ -1,9 +1,11 @@
 import { useTranslation } from "react-i18next";
-import { Link, Outlet } from "react-router-dom";
-import { AppRouteKey } from "../../core/constants/routes";
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import { AppRouteKey, setNavigator } from "../../core/constants/routes";
 import { useQueryClient } from "@tanstack/react-query";
 import { UserDto } from "../../core/dto/user.dto";
 import { useState, useLayoutEffect } from "react";
+import { queryKeys } from "../../core/constants/queryKeys";
+import { useLogout } from "../../hooks/custom/useAuth";
 
 const getPreferredTheme = () => {
   const darkMode = localStorage.getItem("darkMode");
@@ -17,12 +19,15 @@ const Layout = () => {
     t,
     i18n: { changeLanguage, language },
   } = useTranslation("main");
+  const navigate = useNavigate();
   const queryClient = useQueryClient();
-  const user = queryClient.getQueryData<UserDto>(["user"]);
+  const { mutate: mutateLogout, isPending } = useLogout();
+  const user = queryClient.getQueryData<UserDto | null>([queryKeys.user]);
 
   const [darkMode, setDarkMode] = useState(getPreferredTheme());
 
   useLayoutEffect(() => {
+    setNavigator(navigate);
     setDocumentTheme(darkMode);
     const lan = localStorage.getItem("lan");
     if (lan && lan !== language) changeLanguage(lan);
@@ -50,6 +55,8 @@ const Layout = () => {
     localStorage.setItem("lan", lan);
   }
 
+  console.log(user);
+
   return (
     <div className="w-full min-h-screen ">
       <header className="w-full flex justify-between items-center mb-1 px-5 py-3 shadow-md dark:shadow-amber-50">
@@ -61,10 +68,11 @@ const Layout = () => {
             {darkMode ? t("lightMode") : t("darkMode")}
           </button>
           <button
+            disabled={isPending}
             className="btn w-20"
             onClick={() => {
               if (user) {
-                queryClient.setQueryData<UserDto>(["user"], undefined);
+                mutateLogout();
               } else {
                 AppRouteKey.login.go();
               }

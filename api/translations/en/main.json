@@ -3,5 +3,6 @@
   "login": "Login",
   "logout": "Logout",
   "lightMode": "Light Mode",
-  "darkMode": "Dark Mode"
+  "darkMode": "Dark Mode",
+  "youLoggedIn":"You've already logged in!"
 }

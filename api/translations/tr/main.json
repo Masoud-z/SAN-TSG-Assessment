@@ -3,5 +3,6 @@
   "login": "Giriş",
   "logout": "Çıkış",
   "lightMode": "Açık Mod",
-  "darkMode": "Koyu Mod"
+  "darkMode": "Koyu Mod",
+  "youLoggedIn": "Zaten giriş yaptınız!"
 }

@@ -26,7 +26,7 @@ h5 {
 }
 
 button {
-  @apply hover:cursor-pointer disabled:hover:cursor-default;
+  @apply hover:cursor-pointer disabled:hover:cursor-default disabled:opacity-50;
 }
 
 .btn {
