@@ -11,6 +11,7 @@ import {
 } from "react-router-dom";
 import "./i18n/i18n";
 import App from "./App";
+import Layout from "./components/layout/Layout";
 
 type Routes = RouteProps & {
   lazyElement?: React.LazyExoticComponent<() => JSX.Element>;
@@ -21,7 +22,7 @@ const routes: Routes[] = [];
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/">
+    <Route path="/" element={<Layout />}>
       <Route index element={<App />} />
       {routes.map((route) => (
         <Route

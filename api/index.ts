@@ -28,6 +28,11 @@ app.get("/translations/:lang/:ns", (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
   const lang = req.params.lang.split("-")[0];
   const ns = req.params.ns;
+  if (ns === "translation") {
+    res.set("Cache-control", "public, max-age=3600");
+    res.json({ ok: "OK" });
+    return;
+  }
 
   // language-location
   const filePath = path.join(
@@ -48,6 +53,7 @@ app.get("/translations/:lang/:ns", (req, res) => {
       res.json(jsonData);
     } catch (parseError) {
       res.status(500).json({ error: "Error parsing translation file." });
+      console.log(parseError);
     }
   });
 });

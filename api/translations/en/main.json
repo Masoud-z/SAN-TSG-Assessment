@@ -1,3 +1,7 @@
 {
-  "hello": "Hello"
+  "assignment": "SAN-TSG Assignment",
+  "login": "Login",
+  "logout": "Logout",
+  "lightMode": "Light Mode",
+  "darkMode": "Dark Mode"
 }

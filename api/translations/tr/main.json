@@ -1,3 +1,7 @@
 {
-  "hello": "Merhaba"
+  "assignment": "SAN-TSG Görevi",
+  "login": "Giriş",
+  "logout": "Çıkış",
+  "lightMode": "Açık Mod",
+  "darkMode": "Koyu Mod"
 }
