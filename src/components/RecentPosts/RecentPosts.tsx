@@ -25,13 +25,13 @@ const RecentPosts = ({ count }: RecentPostsProps) => {
         </>
       ) : (
         <>
-          <ol type="1" className="space-y-4">
+          <ul className="space-y-4">
             {data?.slice(0, count).map((post) => (
               <li key={post.id}>
                 <Link to={AppRouteKey.post.get(post.id)}>{post.title}</Link>
               </li>
             ))}
-          </ol>
+          </ul>
           <h4>
             <Link to={AppRouteKey.posts.get()}>{t("viewAllPosts")}</Link>
           </h4>

@@ -5,10 +5,9 @@ import { getCommentsServiceApi } from "../../core/services/comments/methods";
 
 export const useComments = () => {
   return useSuspenseQuery<CommentDto[]>({
-    queryKey: [queryKeys.posts],
+    queryKey: [queryKeys.comments],
     queryFn: async () => {
       const response = await getCommentsServiceApi();
-      await new Promise((resolve) => setTimeout(resolve, 5000));
       return response.data;
     },
     staleTime: 15000,

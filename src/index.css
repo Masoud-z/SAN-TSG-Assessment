@@ -26,7 +26,7 @@ h5 {
 }
 
 li {
-  @apply list-decimal list-inside font-medium text-lg/5;
+  @apply !list-disc !list-inside font-medium text-lg/5;
 }
 
 button {

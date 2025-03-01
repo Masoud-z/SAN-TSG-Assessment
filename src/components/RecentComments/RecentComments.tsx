@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
-import { usePosts } from "../../hooks/custom/usePosts";
 import Card from "../Card/Card";
+import { useComments } from "../../hooks/custom/useComments";
 
 interface RecentCommentsProps {
   count: number;
@@ -8,7 +8,7 @@ interface RecentCommentsProps {
 
 const RecentComments = ({ count }: RecentCommentsProps) => {
   const { t } = useTranslation(["comments", "main"]);
-  const { data, error, refetch } = usePosts();
+  const { data, error, refetch } = useComments();
 
   return (
     <Card className="w-96 flex flex-col justify-baseline items-baseline gap-4 py-4 px-3 min-h-96">
@@ -23,11 +23,16 @@ const RecentComments = ({ count }: RecentCommentsProps) => {
         </>
       ) : (
         <>
-          <ol type="1" className="space-y-4">
-            {data?.slice(0, count).map((post) => (
-              <li key={post.id}>{post.title}</li>
+          <ul className="space-y-4">
+            {data?.slice(0, count).map((comment) => (
+              <li key={comment.id} className="line-clamp-2">
+                <span className="font-bold text-xl">
+                  Post {comment.postId}:{" "}
+                </span>
+                {comment.body}
+              </li>
             ))}
-          </ol>
+          </ul>
         </>
       )}
     </Card>
