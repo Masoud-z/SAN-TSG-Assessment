@@ -24,7 +24,7 @@ const ErrorPage = () => {
             : "Unknown error, check console for more details"}
         </>
       </p>
-      <h2>
+      <h2 className="underline">
         <Link to={AppRouteKey.home.get()}>Home Page</Link>
       </h2>
     </div>
