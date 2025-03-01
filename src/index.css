@@ -25,6 +25,10 @@ h5 {
   @apply text-xl font-bold;
 }
 
+li {
+  @apply list-decimal list-inside font-medium text-lg/5;
+}
+
 button {
   @apply hover:cursor-pointer disabled:hover:cursor-default disabled:opacity-50;
 }

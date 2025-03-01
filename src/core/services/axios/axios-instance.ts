@@ -10,7 +10,7 @@ export const api = <Result>(
 ): Promise<AxiosResponse<Result>> => {
   return axiosInstance({ ...options })
     .then((response: AxiosResponse<Result>) => {
-      return Promise.resolve(response);
+      return response;
     })
     .catch((error) => {
       errorHandler(error, handleError);

@@ -4,5 +4,7 @@
   "logout": "Çıkış",
   "lightMode": "Açık Mod",
   "darkMode": "Koyu Mod",
-  "youLoggedIn": "Zaten giriş yaptınız!"
+  "youLoggedIn": "Zaten giriş yaptınız!",
+  "somethingWentWrong": "Üzgünüm, bir şeyler ters gitti!",
+  "tryAgain": "Tekrar deneyin"
 }
