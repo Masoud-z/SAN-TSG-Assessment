@@ -10,7 +10,7 @@ const ErrorPage = () => {
       id="error-page"
       className="w-full h-screen justify-center items-center flex flex-col gap-4 "
     >
-      <img src="./error.jpg" width={300} height={300} />
+      <img src="/error.jpg" width={300} height={300} />
       <h1>Oops!</h1>
       <p>Sorry, an unexpected error has occurred.</p>
       <p>

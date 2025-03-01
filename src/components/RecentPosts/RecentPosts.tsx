@@ -3,6 +3,7 @@ import { AppRouteKey } from "../../core/constants/routes";
 import { usePosts } from "../../hooks/custom/usePosts";
 import Card from "../Card/Card";
 import { useTranslation } from "react-i18next";
+import RecentSkeleton from "../RecentSkeleton/RecentSkeleton";
 
 interface RecentPostsProps {
   count: number;
@@ -10,34 +11,40 @@ interface RecentPostsProps {
 
 const RecentPosts = ({ count }: RecentPostsProps) => {
   const { t } = useTranslation(["posts", "main"]);
-  const { data, error, refetch } = usePosts();
+  const { data, error, refetch, isLoading } = usePosts();
 
   return (
-    <Card className="w-96 flex flex-col justify-baseline items-baseline gap-4 py-4 px-3 min-h-96">
-      <h3>{t("recentPosts")}</h3>
-      {error ? (
-        <>
-          <h5>{t("somethingWentWrong", { ns: "main" })}</h5>
-          <div>{error.message}</div>
-          <button onClick={() => refetch()}>
-            {t("tryAgain", { ns: "main" })}
-          </button>
-        </>
+    <>
+      {isLoading ? (
+        <RecentSkeleton count={5} title={t("recentPosts")} />
       ) : (
-        <>
-          <ul className="space-y-4">
-            {data?.slice(0, count).map((post) => (
-              <li key={post.id}>
-                <Link to={AppRouteKey.post.get(post.id)}>{post.title}</Link>
-              </li>
-            ))}
-          </ul>
-          <h4>
-            <Link to={AppRouteKey.posts.get()}>{t("viewAllPosts")}</Link>
-          </h4>
-        </>
+        <Card className="w-96 flex flex-col justify-baseline items-baseline gap-4 py-4 px-3 min-h-96">
+          <h3>{t("recentPosts")}</h3>
+          {error ? (
+            <>
+              <h5>{t("somethingWentWrong", { ns: "main" })}</h5>
+              <div>{error.message}</div>
+              <button onClick={() => refetch()}>
+                {t("tryAgain", { ns: "main" })}
+              </button>
+            </>
+          ) : (
+            <>
+              <ul className="space-y-4">
+                {data?.slice(0, count).map((post) => (
+                  <li key={post.id}>
+                    <Link to={AppRouteKey.post.get(post.id)}>{post.title}</Link>
+                  </li>
+                ))}
+              </ul>
+              <h4>
+                <Link to={AppRouteKey.posts.get()}>{t("viewAllPosts")}</Link>
+              </h4>
+            </>
+          )}
+        </Card>
       )}
-    </Card>
+    </>
   );
 };
 

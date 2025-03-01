@@ -1,1 +1,6 @@
-{ "recentPosts": "Son Yazılar:", "viewAllPosts": "Tüm Yazıları Görüntüle..." }
+{
+  "recentPosts": "Son Yazılar:",
+  "viewAllPosts": "Tüm Yazıları Görüntüle...",
+  "posts": "Gönderiler:",
+  "createPost": "Gönderi Oluştur"
+}

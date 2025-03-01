@@ -21,6 +21,8 @@ import NotFound from "./pages/error/NotFound";
 import ErrorPage from "./pages/error/ErrorPage";
 import NotAuthorized from "./pages/error/NotAuthorized";
 import ProtectedRoute from "./ProtectedRoute";
+import Posts from "./pages/posts/Posts";
+import { Permissions } from "./core/enums/permissions";
 
 type Routes = RouteProps & {
   lazyElement?: React.LazyExoticComponent<() => JSX.Element>;
@@ -39,6 +41,14 @@ const routes: Routes[] = [
   {
     path: AppRouteKey.login.get(),
     lazyElement: lazy(() => import("./pages/login/Login")),
+  },
+  {
+    path: AppRouteKey.posts.get(),
+    element: <Posts />,
+    permission: Permissions.ViewPosts,
+    children: [
+      <Route path={`${AppRouteKey.posts.get()}/:postId`} element={<div>post</div>} />,
+    ],
   },
   {
     path: AppRouteKey.notAuthorized.get(),
@@ -68,6 +78,7 @@ const router = createBrowserRouter(
               route.element
             )
           }
+          children={route.children}
         />
       ))}
       <Route path="*" element={<NotFound />} />

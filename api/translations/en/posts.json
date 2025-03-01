@@ -1,1 +1,6 @@
-{ "recentPosts": "Recent Posts:", "viewAllPosts": "View All Posts..." }
+{
+  "recentPosts": "Recent Posts:",
+  "viewAllPosts": "View All Posts...",
+  "posts": "Posts:",
+  "createPost": "Create Post"
+}

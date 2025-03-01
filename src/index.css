@@ -29,6 +29,10 @@ li {
   @apply !list-disc !list-inside font-medium text-lg/5;
 }
 
+a {
+  @apply hover:opacity-70 transition-all delay-300 ease-linear;
+}
+
 button {
   @apply hover:cursor-pointer disabled:hover:cursor-default disabled:opacity-50;
 }
