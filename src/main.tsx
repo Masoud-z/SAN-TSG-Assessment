@@ -17,6 +17,8 @@ import Layout from "./components/Layout/Layout";
 import { AppRouteKey } from "./core/constants/routes";
 import { queryKeys } from "./core/constants/queryKeys";
 import LoadingPage from "./components/LoadingPage/LoadingPage";
+import ErrorPage from "./pages/error/ErrorPage";
+import NotFound from "./pages/error/NotFound";
 // import Home from "./pages/home/Home";
 
 type Routes = RouteProps & {
@@ -40,7 +42,11 @@ const routes: Routes[] = [
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path={AppRouteKey.home.get()} element={<Layout />}>
+    <Route
+      path={AppRouteKey.home.get()}
+      element={<Layout />}
+      errorElement={<ErrorPage />}
+    >
       {/* <Route index element={<Home />} /> */}
       {routes.map((route) => (
         <Route
@@ -49,6 +55,7 @@ const router = createBrowserRouter(
           element={route.lazyElement ? <route.lazyElement /> : route.element}
         />
       ))}
+      <Route path="*" element={<NotFound />} />
     </Route>
   )
 );
