@@ -29,4 +29,5 @@ export const AppRouteKey = {
     get: () => "/posts/create",
     go: () => redirect("/posts/create"),
   },
+  notAuthorized: { get: () => "/403", go: () => redirect("/403") },
 };

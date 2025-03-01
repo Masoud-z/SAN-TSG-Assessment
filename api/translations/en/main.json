@@ -6,5 +6,8 @@
   "darkMode": "Dark Mode",
   "youLoggedIn": "You've already logged in!",
   "somethingWentWrong": "Sorry, something went wrong!",
-  "tryAgain": "Try Again"
+  "tryAgain": "Try Again",
+  "homePage": "Home Page",
+  "notAuthorized": "You are not authorized to access this page!",
+  "notFound": "Page Not Found!"
 }

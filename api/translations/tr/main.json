@@ -6,5 +6,8 @@
   "darkMode": "Koyu Mod",
   "youLoggedIn": "Zaten giriş yaptınız!",
   "somethingWentWrong": "Üzgünüm, bir şeyler ters gitti!",
-  "tryAgain": "Tekrar deneyin"
+  "tryAgain": "Tekrar deneyin",
+  "homePage": "Ana Sayfa",
+  "notAuthorized": "Bu sayfaya erişim yetkiniz yok!",
+  "notFound":"Sayfa Bulunamadı!"
 }

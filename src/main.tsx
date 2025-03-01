@@ -19,10 +19,12 @@ import { queryKeys } from "./core/constants/queryKeys";
 import LoadingPage from "./components/LoadingPage/LoadingPage";
 import NotFound from "./pages/error/NotFound";
 import ErrorPage from "./pages/error/ErrorPage";
-// import Home from "./pages/home/Home";
+import NotAuthorized from "./pages/error/NotAuthorized";
+import ProtectedRoute from "./ProtectedRoute";
 
 type Routes = RouteProps & {
   lazyElement?: React.LazyExoticComponent<() => JSX.Element>;
+  permission?: string;
 };
 
 const queryClient = new QueryClient();
@@ -38,6 +40,10 @@ const routes: Routes[] = [
     path: AppRouteKey.login.get(),
     lazyElement: lazy(() => import("./pages/login/Login")),
   },
+  {
+    path: AppRouteKey.notAuthorized.get(),
+    element: <NotAuthorized />,
+  },
 ];
 
 const router = createBrowserRouter(
@@ -51,7 +57,17 @@ const router = createBrowserRouter(
         <Route
           key={route.path}
           path={route.path}
-          element={route.lazyElement ? <route.lazyElement /> : route.element}
+          element={
+            route.permission ? (
+              <ProtectedRoute permission={route.permission}>
+                {route.lazyElement ? <route.lazyElement /> : route.element}
+              </ProtectedRoute>
+            ) : route.lazyElement ? (
+              <route.lazyElement />
+            ) : (
+              route.element
+            )
+          }
         />
       ))}
       <Route path="*" element={<NotFound />} />
