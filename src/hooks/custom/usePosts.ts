@@ -7,7 +7,6 @@ export const usePosts = () => {
   return useQuery<PostDto[]>({
     queryKey: [queryKeys.posts],
     queryFn: async () => {
-      console.log("Fetching posts");
       const response = await getPostsServiceApi();
       return response.data;
     },

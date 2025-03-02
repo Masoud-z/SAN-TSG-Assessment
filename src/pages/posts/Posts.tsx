@@ -3,25 +3,29 @@ import { usePosts } from "../../hooks/custom/usePosts";
 import { Link } from "react-router-dom";
 import { AppRouteKey } from "../../core/constants/routes";
 import PostsSkelton from "../../components/PostsSkelton/PostsSkelton";
-import useCheckPermission from "../../core/utilities/permissionChecker";
 import { Permissions } from "../../core/enums/permissions";
+import InPageErrorMessage from "../../components/InPageErrorMessage/InPageErrorMessage";
+import LinkWithPermission from "../../components/LinkWithPermission/LinkWithPermission";
 
 const Posts = () => {
-  const { t } = useTranslation("main");
-  const { data, isLoading } = usePosts();
+  const { t } = useTranslation("posts");
+  const { data, isLoading, error, refetch } = usePosts();
 
   return (
-    <div className="m-6">
+    <>
       <div className="w-full flex justify-between items-center mb-10">
         <h1>{t("posts")}</h1>
-        {useCheckPermission(Permissions.CreatePost) && (
-          <Link to={AppRouteKey.createPost.get()} className=" btn-primary">
-            {t("createPost")}
-          </Link>
-        )}
+
+        <LinkWithPermission
+          to={AppRouteKey.createPost.get()}
+          className="btn-primary"
+          title={t("createPost")}
+          permission={Permissions.CreatePost}
+        />
       </div>
       <div className="flex flex-col gap-8 justify-baseline items-baseline">
         {isLoading && <PostsSkelton count={3} />}
+        {error && <InPageErrorMessage error={error} refetch={refetch} />}
         {data?.map((post) => (
           <Link
             to={AppRouteKey.post.get(post.id)}
@@ -33,7 +37,7 @@ const Posts = () => {
           </Link>
         ))}
       </div>
-    </div>
+    </>
   );
 };
 

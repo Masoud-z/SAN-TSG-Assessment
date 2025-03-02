@@ -21,7 +21,6 @@ import NotFound from "./pages/error/NotFound";
 import ErrorPage from "./pages/error/ErrorPage";
 import NotAuthorized from "./pages/error/NotAuthorized";
 import ProtectedRoute from "./ProtectedRoute";
-import Posts from "./pages/posts/Posts";
 import { Permissions } from "./core/enums/permissions";
 
 type Routes = RouteProps & {
@@ -44,11 +43,13 @@ const routes: Routes[] = [
   },
   {
     path: AppRouteKey.posts.get(),
-    element: <Posts />,
+    lazyElement: lazy(() => import("./pages/posts/Posts")),
     permission: Permissions.ViewPosts,
-    children: [
-      <Route path={`${AppRouteKey.posts.get()}/:postId`} element={<div>post</div>} />,
-    ],
+  },
+  {
+    path: `${AppRouteKey.posts.get()}/:postId`,
+    lazyElement: lazy(() => import("./pages/posts/post/Post")),
+    permission: Permissions.ViewPosts,
   },
   {
     path: AppRouteKey.notAuthorized.get(),

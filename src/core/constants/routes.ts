@@ -10,6 +10,7 @@ const redirect = (path: string) => {
   if (navigate) {
     navigate(path);
   } else {
+    setTimeout(() => redirect(path), 100);
     console.warn("Navigator not yet initialized");
   }
 };

@@ -97,7 +97,9 @@ const Layout = () => {
           </div>
         </div>
       </header>
-      <Outlet />
+      <div className="m-6">
+        <Outlet />
+      </div>
     </div>
   );
 };

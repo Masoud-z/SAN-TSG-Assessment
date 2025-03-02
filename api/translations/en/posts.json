@@ -2,5 +2,9 @@
   "recentPosts": "Recent Posts:",
   "viewAllPosts": "View All Posts...",
   "posts": "Posts:",
-  "createPost": "Create Post"
+  "createPost": "Create Post",
+  "postTopic": "Post Topic:",
+  "editPost": "Edit Post",
+  "postComment": "Post Comments:",
+  "writeComment": "Write a comment..."
 }

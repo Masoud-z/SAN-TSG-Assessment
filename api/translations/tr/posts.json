@@ -2,5 +2,9 @@
   "recentPosts": "Son Yazılar:",
   "viewAllPosts": "Tüm Yazıları Görüntüle...",
   "posts": "Gönderiler:",
-  "createPost": "Gönderi Oluştur"
+  "createPost": "Gönderi Oluştur",
+  "postTopic": "Konu başlığı:",
+  "editPost": "Gönderiyi Düzenle",
+  "postComment": "Gönderi Yorumları:",
+  "writeComment": "Bir yorum yazın..."
 }

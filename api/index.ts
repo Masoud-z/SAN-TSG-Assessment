@@ -53,7 +53,7 @@ app.get("/translations/:lang/:ns", (req, res) => {
       res.json(jsonData);
     } catch (parseError) {
       res.status(500).json({ error: "Error parsing translation file." });
-      console.log(parseError);
+      console.error(parseError);
     }
   });
 });
