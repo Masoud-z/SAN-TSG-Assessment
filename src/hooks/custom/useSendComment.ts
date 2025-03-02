@@ -50,9 +50,9 @@ export const useSendComment = () => {
       toast.error(error.message);
       rollBack?.();
     },
-    onSettled: () => {
+    onSettled: (comment) => {
       return queryClient.invalidateQueries({
-        queryKey: [queryKeys.comments, queryKeys.postComments],
+        queryKey: [queryKeys.comments, queryKeys.postComments, comment?.postId],
       });
     },
   });

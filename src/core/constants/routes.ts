@@ -26,7 +26,7 @@ export const AppRouteKey = {
     get: (id: number) => `/posts/${id}/edit`,
     go: (id: number) => redirect(`/posts/${id}/edit`),
   },
-  createPost: {
+  newPost: {
     get: () => "/posts/create",
     go: () => redirect("/posts/create"),
   },

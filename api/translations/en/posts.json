@@ -6,5 +6,11 @@
   "postTopic": "Post Topic:",
   "editPost": "Edit Post",
   "postComment": "Post Comments:",
-  "writeComment": "Write a comment..."
+  "writeComment": "Write a comment...",
+  "postTitle": "Post Title:",
+  "least3char": "At least 3 characters required",
+  "postContent": "Post Content:",
+  "least10char": "At least 10 characters required",
+  "save": "Save",
+  "cancel": "Cancel"
 }

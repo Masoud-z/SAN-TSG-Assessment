@@ -17,7 +17,7 @@ const Posts = () => {
         <h1>{t("posts")}</h1>
 
         <LinkWithPermission
-          to={AppRouteKey.createPost.get()}
+          to={AppRouteKey.newPost.get()}
           className="btn-primary"
           title={t("createPost")}
           permission={Permissions.CreatePost}

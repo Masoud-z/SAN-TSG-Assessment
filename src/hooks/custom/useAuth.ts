@@ -11,7 +11,12 @@ export const useLogin = () => {
     onSuccess: () => {
       queryClient.setQueryData<UserDto>([queryKeys.user], {
         name: "John Doe",
-        permissions: ["VIEW_POSTS", "VIEW_COMMENTS"],
+        permissions: [
+          "VIEW_POSTS",
+          "VIEW_COMMENTS",
+          "EDIT_POST",
+          "CREATE_POST",
+        ],
       });
       AppRouteKey.home.go();
     },
@@ -27,6 +32,7 @@ export const useLogout = () => {
     mutationFn: async () => {},
     onSuccess: () => {
       queryClient.setQueryData<UserDto | null>([queryKeys.user], null);
+      AppRouteKey.home.go();
     },
     onError: () => {
       toast.error("Logout failed, something went wrong!");

@@ -15,13 +15,14 @@ import {
 import "./i18n/i18n";
 import Layout from "./components/Layout/Layout";
 import { AppRouteKey } from "./core/constants/routes";
-import { queryKeys } from "./core/constants/queryKeys";
 import LoadingPage from "./components/LoadingPage/LoadingPage";
 import NotFound from "./pages/error/NotFound";
 import ErrorPage from "./pages/error/ErrorPage";
 import NotAuthorized from "./pages/error/NotAuthorized";
 import ProtectedRoute from "./ProtectedRoute";
 import { Permissions } from "./core/enums/permissions";
+import { queryKeys } from "./core/constants/queryKeys";
+import { ToastContainer } from "react-toastify";
 
 type Routes = RouteProps & {
   lazyElement?: React.LazyExoticComponent<() => JSX.Element>;
@@ -50,6 +51,11 @@ const routes: Routes[] = [
     path: `${AppRouteKey.posts.get()}/:postId`,
     lazyElement: lazy(() => import("./pages/posts/post/Post")),
     permission: Permissions.ViewPosts,
+  },
+  {
+    path: AppRouteKey.newPost.get(),
+    lazyElement: lazy(() => import("./pages/posts/newPost/NewPost")),
+    permission: Permissions.CreatePost,
   },
   {
     path: AppRouteKey.notAuthorized.get(),
@@ -98,6 +104,7 @@ createRoot(document.getElementById("root")!).render(
         },
       }}
     >
+      <ToastContainer />
       <Suspense fallback={<LoadingPage />}>
         <RouterProvider router={router} />
       </Suspense>

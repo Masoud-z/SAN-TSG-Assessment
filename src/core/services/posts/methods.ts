@@ -1,5 +1,5 @@
 import { PostDto } from "../../dto/post.dto";
-import { httpGetService } from "../httpService";
+import { httpGetService, httpPostService } from "../httpService";
 import { urls } from "../urls";
 
 export const getPostsServiceApi = () => {
@@ -8,4 +8,13 @@ export const getPostsServiceApi = () => {
 
 export const getPostServiceApi = (params: { id: string }) => {
   return httpGetService<PostDto[], { id: string }>(urls.posts, { params }, true);
+};
+
+export const postNewPostServiceApi = (body: Omit<PostDto, "id">) => {
+  return httpPostService<PostDto, Omit<PostDto, "id">>(
+    urls.comments,
+    body,
+    {},
+    false
+  );
 };

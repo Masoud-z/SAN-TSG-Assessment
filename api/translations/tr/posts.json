@@ -6,5 +6,11 @@
   "postTopic": "Konu başlığı:",
   "editPost": "Gönderiyi Düzenle",
   "postComment": "Gönderi Yorumları:",
-  "writeComment": "Bir yorum yazın..."
+  "writeComment": "Bir yorum yazın...",
+  "postTitle": "Gönderi Başlığı:",
+  "least3char": "En az 3 karakter gerekli",
+  "postContent": "Gönderi İçeriği:",
+  "least10char": "En az 10 karakter gerekli",
+  "save": "Kaydet",
+  "cancel": "İptal"
 }
